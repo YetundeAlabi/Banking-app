@@ -4,6 +4,7 @@ import random
 from log import Logger
 from customer import Customer
 import os
+import pandas as pd
 
 # def random_password():
 #     return "".join((random.choice(string.ascii_letters) for x in range(7)))
@@ -21,8 +22,6 @@ class Staff():
         #     writer = csv.writer(file)
         #     writer.writerow([self.name, self.temp_password])
 
-    def register_staff():
-        pass
     def login(self, username, password):
         if self.name == username and self.temp_password == password:
             self.logged_in = True
@@ -36,6 +35,13 @@ class Staff():
         self.logged_in = True
         logger.log_activity("staff logged out successfully")
         return "successfully logged out"
+
+    def change_password(self, new_password):
+        df = pd.read_csv("staff.csv", index_col="name")
+        df.loc[self.name, "temp_password"] = new_password
+        df.to_csv("staff.csv", index=False)
+        logger.log_activity(f"staff {self.name} changed password")
+        return self.display_staff_details()
 
 
     def deposit(self, customer:Customer, amount):
@@ -55,7 +61,7 @@ class Staff():
             return f"{bal} Balance for {customer.name}"
             
     def display_staff_details(self):
-        details = f"name : {self.name}, password: {self.temp_password}"
+        details = f"name : {self.name}, password: {self.temp_password}, is_suspended: {self.is_suspended}"
         return details
     
         
