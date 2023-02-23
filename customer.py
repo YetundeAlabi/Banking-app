@@ -49,25 +49,5 @@ class Customer():
         return self.balance
 
 
-class CustomerDb:
-
-    def __init__(self, filename="customer.csv"):
-         self.filename = filename
-         self.customers = []
-
-    def add_customer(self, customer):
-         self.customers.append(customer)
-         return self.customers
-    
-    def add_to_csv(self):
-        file_exists = os.path.isfile(self.filename)
-        with open(self.filename, "a", newline="") as file:
-            headers = ["first_name", "last_name", "pin", "phone", "acct_number", "balance", "acct_type" ]
-            writer = csv.DictWriter(file, delimiter=',', lineterminator='\n',fieldnames=headers)
-            if not file_exists:
-                writer.writeheader()
-            else:
-                for customer in self.customers:
-                    writer.writerow([customer.first_name, customer.last_name, customer.pin, customer.phone, customer.account_num,
-                                        customer.balance, customer.acct_type])
-            
+    def transfer(self, customer, amount):
+        pass
