@@ -49,5 +49,13 @@ class Customer():
         return self.balance
 
 
-    def transfer(self, customer, amount):
-        pass
+    def transfer(self, recipient, amount):
+        if self.balance >= amount:
+            self.balance -= amount
+            recipient.balance += amount
+            df = pd.read_csv("customer.csv", index_col="acct_number")
+            df.loc[self.account_num, "balance"] = self.balance
+            df.loc[recipient.account_num, "balance"] = recipient.balance
+            df.to_csv("customer.csv", index=False)
+            logger.log_activity(f" customer {self.first_name} transferred {amount:,.2f} to {recipient.first_name}")
+            return self.balance
