@@ -1,5 +1,3 @@
 Date,Time,Activity
-2023-02-26,23:22:14.123369,staff logged in successfully
-2023-02-26,23:22:32.721409,staff Tolu changed password
-2023-02-26,23:22:51.559576,Tolu checked customerNimi balance
-2023-02-26,23:23:41.328787,staff logged out successfully
+2023-02-27,00:41:16.785915,A new customer tola account was created
+2023-02-27,00:41:45.651532,customer Yetunde transferred 100.00 to Nimi

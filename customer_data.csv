@@ -1,5 +1,3 @@
-ID,Name,Balance,Account Number
-1,Nimi,19700,2257009884
-2,Daniel,1600,3639422545
-3,Vp,5000,4629576204
-4,cto,20000,9473265060
+ID,Firstname,Lastname,Pin,Phone,Account Number,Balance,Acct_Type
+1,Yetunde,alabi,12345,8146365191,3375671794,,
+2,Nimi,Alabi,nimi0123,81339857,4559761283,50605.0,

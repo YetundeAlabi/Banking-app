@@ -1,4 +1,4 @@
-from staff import StaffDb, Staff
+from staff import StaffDb
 from log import Logger
 import csv
 import string
@@ -9,11 +9,11 @@ def random_password():
 
 logger = Logger()
 db = StaffDb()
-# staff = Staff()
+
 
 class Admin():
     def __init__(self, username="admin", password="devadmin"):
-        # super().__init__(name, temp_password)
+        
         self.username = username
         self.password = password
         self.logged_in = False
@@ -35,12 +35,14 @@ class Admin():
             print("You need to be logged in to add staff.")
         db.add_staff()
         
+        
     def view(self, filename):
         if self.logged_in:
             with open(filename, "r") as file:
                 reader = csv.DictReader(file)
                 for row in reader:
                     print(row)
+        logger.log_activity(f"admin viewed {filename} ")
  
 
     def view_logs(self, filename="log.txt"):
@@ -57,6 +59,7 @@ class Admin():
             idx = staff.staff_id - 1
             df.loc[idx, "Is_suspended"] = True
             df.to_csv("staff.csv", index=False)
+        logger.log_activity(f"{staff.name} suspended by admin")
         
 
     def reactivate_staff(self, staff):
@@ -68,6 +71,7 @@ class Admin():
         idx = staff.staff_id - 1
         df.loc[idx, "Is_suspended"] = False
         df.to_csv("staff.csv", index=False)
+        logger.log_activity(f"{staff.name} reactivated by admin")
         
 
     

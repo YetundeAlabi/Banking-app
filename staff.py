@@ -32,14 +32,14 @@ class Staff:
         if self.name == username and self.temp_password == password:
             self.logged_in = True
             print("Login successfully!")
-            logger.log_activity("staff logged in successfully")
+            logger.log_activity(f"staff {self.name} logged in successfully")
 
         else:
             print("incorrect username or password")
 
     def logout(self):
         self.logged_in = False
-        logger.log_activity("staff logged out successfully")
+        logger.log_activity(f"staff {self.name} logged out successfully")
         return "successfully logged out"
 
     def change_password(self, new_password):
@@ -55,7 +55,7 @@ class Staff:
         if self.logged_in:
             customer.deposit(amount)
             logger.log_activity(f"Deposit of {amount} successfully made for customer {customer.first_name} by {self.name}")
-            return f"Deposit of {amount} successfully made for customer{customer.first_name}"
+            return f"Deposit of {amount} successfully made for customer {customer.first_name}"
 
         else:
             return "You must be logged in to make a deposit."
@@ -64,8 +64,8 @@ class Staff:
     def view_bal(self, customer):
         if self.logged_in:
             bal = customer.check_balance()
-            logger.log_activity(f"{self.name} checked customer{customer.name} balance")
-            return f"{bal} Balance for {customer.name}"
+            logger.log_activity(f"{self.name} checked customer {customer.first_name} balance")
+            return f"{bal} Balance for {customer.first_name}"
             
     def display_staff_details(self):
         details = f"name : {self.name}, password: {self.temp_password}, is_suspended: {self.is_suspended}"
@@ -95,6 +95,7 @@ class StaffDb:
         self.df = self.df.append(new_row, ignore_index=True)
         # save updated dataframe to CSV file
         self.df.to_csv('staff.csv', index=False)
+        logger.log_activity(f"admin created a new staff {staff.name}")
         print('Staff created successfully!\n')
 
 
