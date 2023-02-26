@@ -6,21 +6,27 @@ from customer import Customer
 import os
 import pandas as pd
 
-# def random_password():
-#     return "".join((random.choice(string.ascii_letters) for x in range(7)))
+def random_password():
+    return "".join((random.choice(string.ascii_letters) for x in range(10)))
 
 logger = Logger()
-class Staff():
-    def __init__(self, name, temp_password,):
+
+staff_file = os.path.isfile('staff.csv')
+if not staff_file:
+    with open('staff.csv', 'w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(['ID', 'Name', 'Password', 'Is_suspended'])
+
+
+class Staff:
+    def __init__(self, staff_id, name, temp_password):
+        self.staff_id = staff_id
         self.name = name
         self.temp_password = temp_password
         self.logged_in = False
         self.suspended = []
         self.is_suspended = False
         
-        # with open(self.filename, mode='a') as file:
-        #     writer = csv.writer(file)
-        #     writer.writerow([self.name, self.temp_password])
 
     def login(self, username, password):
         if self.name == username and self.temp_password == password:
@@ -37,8 +43,9 @@ class Staff():
         return "successfully logged out"
 
     def change_password(self, new_password):
-        df = pd.read_csv("staff.csv", index_col="name")
-        df.loc[self.name, "temp_password"] = new_password
+        df = pd.read_csv("staff.csv")
+        idx = self.staff_id - 1
+        df.loc[idx, "Password"] = new_password
         df.to_csv("staff.csv", index=False)
         logger.log_activity(f"staff {self.name} changed password")
         return self.display_staff_details()
@@ -56,7 +63,7 @@ class Staff():
 
     def view_bal(self, customer:Customer):
         if self.logged_in:
-            bal = customer.get_balance()
+            bal = customer.check_balance()
             logger.log_activity(f"{self.name} checked customer{customer.name} balance")
             return f"{bal} Balance for {customer.name}"
             
@@ -64,26 +71,40 @@ class Staff():
         details = f"name : {self.name}, password: {self.temp_password}, is_suspended: {self.is_suspended}"
         return details
     
-        
+
+
 
 class StaffDb:
 
-    def __init__(self, filename="staff.csv"):
-         self.filename = filename
-         self.staff = []
+    def __init__(self):
+        self.df = pd.read_csv("staff.csv")
+        self.staff = []
 
-    def add_staff(self, staff):
-         self.staff.append(staff)
-         return self.staff
+        for i, row in self.df.iterrows():
+            staff = Staff(row['ID'], row['Name'], row['Password'])
+            self.staff.append(staff)
+
+    def add_staff(self):
+        name = input('Enter staff member name: ')
+        temp_password = random_password()
+        staff_id = len(self.staff) + 1
+        staff = Staff(staff_id, name, temp_password)
+        self.staff.append(staff)
+
+        new_row = {'ID': staff_id, 'Name': name, 'Password': temp_password, 'Is_suspended': staff.is_suspended}
+        self.df = self.df.append(new_row, ignore_index=True)
+        # save updated dataframe to CSV file
+        self.df.to_csv('staff.csv', index=False)
+        print('Staff created successfully!\n')
+
+
+    def find_staff(self, staff_id):
+        print(self.staff)
+        for staff in self.staff:
+            print(staff.staff_id)
+            if staff.staff_id == staff_id:
+                return staff
+        return None
+
+            
     
-    def save_to_csv(self):
-        file_exists = os.path.isfile(self.filename)
-        with open(self.filename, "a", newline="") as file:
-            headers = ["username", "password", "is_suspended"]
-            writer = csv.DictWriter(file, delimiter=',', lineterminator='\n',fieldnames=headers)
-            if not file_exists:
-                writer.writeheader()
-            else:
-                for staff in self.staff:
-                    writer.writerow([staff.name, staff.temp_password, staff.is_suspended])
- 

@@ -1,3 +1,3 @@
-Date,Time,Activity
-2023-02-23,13:18:16.784008,admin logged in successfully
-2023-02-23,13:18:16.787661,admin created a new staff Toluwani
+Date,Time,Activity
+2023-02-26,17:58:36.244406,admin logged in successfully
+2023-02-26,18:03:27.364602,admin logged out successfully

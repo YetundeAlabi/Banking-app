@@ -1,13 +1,15 @@
-from staff import Staff, StaffDb
+from staff import StaffDb, Staff
 from log import Logger
 import csv
 import string
 import random
+import pandas as pd
 def random_password():
     return "".join((random.choice(string.ascii_letters) for x in range(7)))
 
 logger = Logger()
 db = StaffDb()
+# staff = Staff()
 
 class Admin():
     def __init__(self, username="admin", password="devadmin"):
@@ -28,39 +30,44 @@ class Admin():
         logger.log_activity("admin logged out successfully")
 
 
-    def create_staff(self, name, temp_password=random_password()):
+    def create_staff(self):
         if not self.logged_in:
             print("You need to be logged in to add staff.")
-
-        new_staff = Staff(name, temp_password)
-        # print("New Staff Added:")
-        # new_staff.display_staff_details()
-        db.add_staff(new_staff)
-        db.save_to_csv()
-        logger.log_activity(f"admin created a new staff {new_staff.name}")
-
+        db.add_staff()
         
     def view(self, filename):
         if self.logged_in:
             with open(filename, "r") as file:
-                reader = csv.reader(file)
+                reader = csv.DictReader(file)
                 for row in reader:
                     print(row)
  
 
-    def view_logs(self, filename = "log.txt"):
+    def view_logs(self, filename="log.txt"):
         if self.logged_in:
             with open(filename, "r") as file:
                 log = file.readlines()
                 print(log)
         
 
-    def suspend_staff():
-        # staff.is_suspended = True
-        pass
+    def suspend_staff(self, staff):
+        if self.logged_in:
+            staff.is_suspended = True
+            df = pd.read_csv("staff.csv")
+            idx = staff.staff_id - 1
+            df.loc[idx, "Is_suspended"] = True
+            df.to_csv("staff.csv", index=False)
+        
 
-    def reactivate_staff():
-        # staff.is_supended
-        pass
+    def reactivate_staff(self, staff):
+        if not self.logged_in:
+            print("You need to be logged in to reactivate staff")
 
+        staff.is_suspended = False
+        df = pd.read_csv("staff.csv")
+        idx = staff.staff_id - 1
+        df.loc[idx, "Is_suspended"] = False
+        df.to_csv("staff.csv", index=False)
+        
 
+    

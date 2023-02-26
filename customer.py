@@ -12,13 +12,16 @@ def account_no():
         return randint(range_start, range_end)
 
 class Customer():
-    def __init__(self, first_name, last_name, pin, acct_type,phone):
+    last_id = 0
+    def __init__(self, first_name, last_name, pin, phone, account_number, acct_type, balance):
+        Customer.last_id += 1
+        self.id = Customer.last_id
         self.first_name = first_name
         self.last_name = last_name
         self.pin = pin
         self.phone = phone
-        self.account_num = account_no()
-        self.balance = 0
+        self.account_number = account_number
+        self.balance = balance
         self.acct_type = acct_type
 
         logger.log_activity(f"A new customer {self.first_name} account was created")
