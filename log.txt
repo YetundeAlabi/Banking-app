@@ -1,3 +1,5 @@
 Date,Time,Activity
-2023-02-26,17:58:36.244406,admin logged in successfully
-2023-02-26,18:03:27.364602,admin logged out successfully
+2023-02-26,23:22:14.123369,staff logged in successfully
+2023-02-26,23:22:32.721409,staff Tolu changed password
+2023-02-26,23:22:51.559576,Tolu checked customerNimi balance
+2023-02-26,23:23:41.328787,staff logged out successfully

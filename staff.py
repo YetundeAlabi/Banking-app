@@ -38,7 +38,7 @@ class Staff:
             print("incorrect username or password")
 
     def logout(self):
-        self.logged_in = True
+        self.logged_in = False
         logger.log_activity("staff logged out successfully")
         return "successfully logged out"
 
@@ -51,7 +51,7 @@ class Staff:
         return self.display_staff_details()
 
 
-    def deposit(self, customer:Customer, amount):
+    def deposit(self, customer, amount):
         if self.logged_in:
             customer.deposit(amount)
             logger.log_activity(f"Deposit of {amount} successfully made for customer {customer.first_name} by {self.name}")
@@ -61,11 +61,11 @@ class Staff:
             return "You must be logged in to make a deposit."
 
 
-    def view_bal(self, customer:Customer):
+    def view_bal(self, customer):
         if self.logged_in:
             bal = customer.check_balance()
-            logger.log_activity(f"{self.name} checked customer{customer.first_name} balance")
-            return f"{bal} Balance for {customer.first_name}"
+            logger.log_activity(f"{self.name} checked customer{customer.name} balance")
+            return f"{bal} Balance for {customer.name}"
             
     def display_staff_details(self):
         details = f"name : {self.name}, password: {self.temp_password}, is_suspended: {self.is_suspended}"

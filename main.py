@@ -174,14 +174,11 @@ class Bank:
                     username = input("Enter staff username: ")
                     password = input("Enter staff password: ")
                     staff.login(username, password)
-                    prompt = input("If it's your first time login in, change password. \n Press Y if Yes, N if No")
-                    if prompt == "Y" or "Yes":
+
+                    first = input("If this is your first time login in, change password. \nPress Y if Yes, N if No: ")
+                    if first == "Y":
                         new_password = input("Enter new password: ")
                         staff.change_password(new_password)
-                    elif prompt == "N" or "No":
-                        continue
-                    else:
-                        print("enter correct answer")
                     
                     while True:
                         print("\nStaff actions:")
