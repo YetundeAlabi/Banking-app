@@ -111,7 +111,7 @@ class Bank:
             print("1. Customer")
             print("2. Staff")
             print("3. Admin")
-            print("0. Quit")
+            print("0. Quit\n")
             menu = input("Enter your role: ")
             if menu == "1":
                 while True:
@@ -120,7 +120,7 @@ class Bank:
                     print('3. Deposit')
                     print('4. Transfer')
                     print('5. Check Balance')
-                    print('6. Quit')
+                    print('6. Quit\n')
                     choice = input('Enter your choice: ')
                     if choice == '1':
                         self.create_account()
@@ -166,6 +166,57 @@ class Bank:
                         break
                     else:
                         print('Invalid choice')
+
+            elif menu == "2":
+                staff_id = int(input("Enter staff id: "))
+                staff = staff_db.find_staff(staff_id)
+                if staff is not None:
+                    username = input("Enter staff username: ")
+                    password = input("Enter staff password: ")
+                    staff.login(username, password)
+                    prompt = input("If it's your first time login in, change password. \n Press Y if Yes, N if No")
+                    if prompt == "Y" or "Yes":
+                        new_password = input("Enter new password: ")
+                        staff.change_password(new_password)
+                    elif prompt == "N" or "No":
+                        continue
+                    else:
+                        print("enter correct answer")
+                    
+                    while True:
+                        print("\nStaff actions:")
+                        print("1. Deposit for customer")
+                        print("2. View customer balance")
+                        print("3. Logout\n")
+
+                        staff_choice = input("Enter your choice: ")
+
+                        if staff_choice == "1":
+                            customer_id = int(input('Enter customer ID: '))
+                            customer = self.find_customer(customer_id)
+                            if customer:
+                                amount = float(input('Enter amount to deposit: '))
+                                staff.deposit(customer, amount)
+                            else:
+                                print("Customer not found")
+
+                        elif staff_choice == "2":
+                            customer_id = int(input('Enter customer ID: '))
+                            customer = self.find_customer(customer_id)
+                            if customer:
+                                staff.view_bal(customer)
+
+                        elif staff_choice == "3":
+                            staff.logout()
+                            break
+
+                        else:
+                            print("Invalid choice")
+
+                        
+                else:
+                    print("Staff not found")
+                
 
             elif menu == "3":
                 username = input("Enter admin username: ")

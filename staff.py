@@ -64,8 +64,8 @@ class Staff:
     def view_bal(self, customer:Customer):
         if self.logged_in:
             bal = customer.check_balance()
-            logger.log_activity(f"{self.name} checked customer{customer.name} balance")
-            return f"{bal} Balance for {customer.name}"
+            logger.log_activity(f"{self.name} checked customer{customer.first_name} balance")
+            return f"{bal} Balance for {customer.first_name}"
             
     def display_staff_details(self):
         details = f"name : {self.name}, password: {self.temp_password}, is_suspended: {self.is_suspended}"
