@@ -6,8 +6,33 @@ from customer import Customer
 import os
 import pandas as pd
 
+
+alphabet = list(string.ascii_letters)
+digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
 def random_password():
     return "".join((random.choice(string.ascii_letters) for x in range(10)))
+
+
+def ceaser(word, direction, shift=7):
+    ceaser_cipher = ""
+    if direction == "decrypt":
+        shift *= -1
+    for char in word:
+        if char.isdigit():
+            index = digits.index(int(char)) + shift
+            index = index % len(digits)
+            char = str(digits[index])
+        elif char in alphabet:      
+            index = (alphabet.index(char) + shift) % len(alphabet)
+            if char.isupper():
+                char = alphabet[index].lower() 
+            elif char.islower():
+                char = alphabet[index].upper()
+        ceaser_cipher += char
+   
+    return ceaser_cipher
+
 
 logger = Logger()
 
@@ -24,12 +49,18 @@ class Staff:
         self.name = name
         self.temp_password = temp_password
         self.logged_in = False
-        self.suspended = []
         self.is_suspended = False
         
-
-    def login(self, username, password):
+        
+    def first_login(self, username, password):
         if self.name == username and self.temp_password == password:
+            self.logged_in = True
+            print("Login for first time successful!")
+            logger.log_activity(f"staff {self.name} logged in successfully for the first time")
+
+        
+    def login(self, username, password):
+        if self.name == username and self.temp_password == ceaser(password, "decrypt"):
             self.logged_in = True
             print("Login successfully!")
             logger.log_activity(f"staff {self.name} logged in successfully")
@@ -45,7 +76,7 @@ class Staff:
     def change_password(self, new_password):
         df = pd.read_csv("staff.csv")
         idx = self.staff_id - 1
-        df.loc[idx, "Password"] = new_password
+        df.loc[idx, "Password"] = ceaser(new_password,"encrypt")
         df.to_csv("staff.csv", index=False)
         logger.log_activity(f"staff {self.name} changed password")
         return self.display_staff_details()
@@ -71,7 +102,7 @@ class Staff:
         details = f"name : {self.name}, password: {self.temp_password}, is_suspended: {self.is_suspended}"
         return details
     
-
+    
 
 
 class StaffDb:
@@ -99,13 +130,12 @@ class StaffDb:
         print('Staff created successfully!\n')
 
 
-    def find_staff(self, staff_id):
-        print(self.staff)
-        for staff in self.staff:
-            print(staff.staff_id)
-            if staff.staff_id == staff_id:
-                return staff
-        return None
+    def find_staff(self, staff_name):
+        df = pd.read_csv("staff.csv")
+        staff = df[df.Name == staff_name]
+        print(staff)
+        return staff
+        
 
-            
-    
+
+ 

@@ -1,3 +1,13 @@
-Date,Time,Activity
-2023-02-27,00:41:16.785915,A new customer tola account was created
-2023-02-27,00:41:45.651532,customer Yetunde transferred 100.00 to Nimi
+Date,Time,Activity
+2023-02-27,11:07:25.799860,admin logged in successfully
+2023-02-27,11:07:45.190911,admin created a new staff Tayo
+2023-02-27,11:08:03.998216,admin viewed staff.csv 
+2023-02-27,11:16:50.215328,admin logged in successfully
+2023-02-27,11:17:12.466269,admin viewed customer_data.csv 
+2023-02-27,11:17:25.804627,admin viewed staff.csv 
+2023-02-27,11:17:53.015694,admin created a new staff daniel
+2023-02-27,11:29:29.189773,admin logged in successfully
+2023-02-27,11:29:33.818552,admin viewed staff.csv 
+2023-02-27,11:35:05.061326,admin logged in successfully
+2023-02-27,11:46:51.643951,A new customer ade account was created
+2023-02-27,11:51:14.796308,A new customer bolu account was created

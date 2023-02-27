@@ -3,7 +3,6 @@ from staff import StaffDb
 from admin import Admin
 import csv
 
-
 staff_db = StaffDb()
 customer_db = CustomerDb()
 
@@ -18,15 +17,19 @@ class Bank:
             print("2. Staff")
             print("3. Admin")
             print("0. Quit\n")
+
             menu = input("Enter your role: ")
             if menu == "1":
                 while True:
+                    print("=" * 30)
                     print('1. Create Account')
                     print('2. Withdraw')
                     print('3. Deposit')
                     print('4. Transfer')
                     print('5. Check Balance')
                     print('6. Quit\n')
+                    print("=" * 30)
+
                     choice = input('Enter your choice: ')
                     if choice == '1':
                         customer_db.create_account()
@@ -74,17 +77,20 @@ class Bank:
                         print('Invalid choice')
 
             elif menu == "2":
-                staff_id = int(input("Enter staff id: "))
-                staff = staff_db.find_staff(staff_id)
+                # staff_name = input("Enter staff name: ")
+                username = input("Enter staff username: ")
+                staff = staff_db.find_staff(username)
                 if staff is not None:
-                    username = input("Enter staff username: ")
-                    password = input("Enter staff password: ")
-                    staff.login(username, password)
-
-                    first = input("If this is your first time login in, change password. \nPress Y if Yes, N if No: ")
+                    first = input("If this is your first time login in \nPress Y for Yes, N if No: ")
+                #     username = input("Enter staff username: ")
                     if first == "Y":
+                        password = input("Enter staff password: ")
+                        staff.first_login(username, password)
                         new_password = input("Enter new password: ")
                         staff.change_password(new_password)
+
+                    password = input("Enter password")
+                    staff.login(username, password)
                     
                     while True:
                         print("\nStaff actions:")
@@ -155,8 +161,8 @@ class Bank:
                         admin.view("staff.csv")
 
                     elif admin_choice == "5":
-                        staff_id = int(input("Enter ID of staff member to suspend: "))
-                        staff = staff_db.find_staff(staff_id)
+                        staff_name = input("Enter name of staff member to suspend: ")
+                        staff = staff_db.find_staff(staff_name)
                         if staff is not None:
                             admin.suspend_staff(staff)
                             print(staff.is_suspended)
@@ -166,9 +172,9 @@ class Bank:
                             print("Staff member not found.")
                             
                     elif admin_choice == "6":
-                        staff_id = int(input("Enter ID of staff member to reactivate: "))
+                        staff_name = input("Enter name of staff member to reactivate: ")
                         print(staff_db.staff)
-                        staff = staff_db.find_staff(staff_id)
+                        staff = staff_db.find_staff(staff_name)
                         if staff is not None:
                             admin.reactivate_staff(staff)
                             # bank.logs.append(f"{name} reactivated by admin.")

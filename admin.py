@@ -34,7 +34,7 @@ class Admin():
         if not self.logged_in:
             print("You need to be logged in to add staff.")
         db.add_staff()
-        
+
         
     def view(self, filename):
         if self.logged_in:
@@ -48,7 +48,7 @@ class Admin():
     def view_logs(self, filename="log.txt"):
         if self.logged_in:
             with open(filename, "r") as file:
-                log = file.readlines()
+                log = file.read()
                 print(log)
         
 
@@ -56,22 +56,21 @@ class Admin():
         if self.logged_in:
             staff.is_suspended = True
             df = pd.read_csv("staff.csv")
-            idx = staff.staff_id - 1
+            idx = staff.ID - 1
             df.loc[idx, "Is_suspended"] = True
             df.to_csv("staff.csv", index=False)
-        logger.log_activity(f"{staff.name} suspended by admin")
+        logger.log_activity(f"{staff.Name} suspended by admin")
         
-
+        
     def reactivate_staff(self, staff):
         if not self.logged_in:
             print("You need to be logged in to reactivate staff")
-
+        
         staff.is_suspended = False
         df = pd.read_csv("staff.csv")
-        idx = staff.staff_id - 1
+        idx = staff.ID - 1
         df.loc[idx, "Is_suspended"] = False
         df.to_csv("staff.csv", index=False)
-        logger.log_activity(f"{staff.name} reactivated by admin")
-        
+        logger.log_activity(f"{staff.Name} reactivated by admin")
 
-    
+

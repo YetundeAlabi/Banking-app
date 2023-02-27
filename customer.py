@@ -3,6 +3,7 @@ import csv
 from log import Logger
 import pandas as pd
 import os
+import string
 
 logger = Logger()
 
@@ -10,6 +11,31 @@ def account_no():
         range_start = 10**9
         range_end = (10**10)-1
         return randint(range_start, range_end)
+
+
+alphabet = list(string.ascii_letters)
+digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+
+def ceaser(word, direction, shift=7):
+    ceaser_cipher = ""
+    if direction == "backward":
+        shift *= -1
+    for char in word:
+        if char.isdigit():
+            index = digits.index(int(char)) + shift
+            index = index % len(digits)
+            char = str(digits[index])
+        elif char in alphabet:      
+            index = (alphabet.index(char) + shift) % len(alphabet)
+            if char.isupper():
+                char = alphabet[index].lower() 
+            elif char.islower():
+                char = alphabet[index].upper()
+        ceaser_cipher += char
+   
+    return ceaser_cipher
+
 
 file_exists = os.path.isfile('customer_data.csv')
 if not file_exists:
@@ -95,7 +121,8 @@ class CustomerDb:
         customer_id = len(self.customers) + 1
         account_number = account_no()
         # create new Account object for customer
-        customer = Customer(customer_id, first_name=first_name, last_name=last_name, pin=pin, phone=phone, account_number=account_number, balance=balance, acct_type=acct_type)
+        customer = Customer(customer_id, first_name=first_name, last_name=last_name, pin=ceaser(pin, direction="forward"), 
+                            phone=phone, account_number=account_number, balance=balance, acct_type=acct_type)
         # append new customer to customers list
         self.customers.append(customer)
         # add new row to dataframe
