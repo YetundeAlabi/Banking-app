@@ -60,7 +60,7 @@ class Staff:
 
         
     def login(self, username, password):
-        if self.name == username and self.temp_password == ceaser(password, "decrypt"):
+        if self.name == username and self.temp_password == ceaser(password, direction="encrypt"):
             self.logged_in = True
             print("Login successfully!")
             logger.log_activity(f"staff {self.name} logged in successfully")
@@ -130,11 +130,12 @@ class StaffDb:
         print('Staff created successfully!\n')
 
 
-    def find_staff(self, staff_name):
-        df = pd.read_csv("staff.csv")
-        staff = df[df.Name == staff_name]
-        print(staff)
-        return staff
+    def find_staff(self, staff_id):
+        for staff in self.staff:
+            print(type(staff.staff_id))
+            if staff.staff_id == staff_id:
+                return staff
+        return None
         
 
 

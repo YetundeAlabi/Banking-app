@@ -57,10 +57,12 @@ class Customer:
 
     
     def withdraw(self, amount):
-        if amount > self.balance:
+        bal = int(self.balance)
+        if amount > bal:
             print('Insufficient balance!')
             return
-        self.balance -= amount
+        bal -= amount
+        self.balance = bal
         df = pd.read_csv("customer_data.csv")
         num = self.customer_id - 1
         df.loc[num, "Balance"] = self.balance
@@ -69,7 +71,9 @@ class Customer:
         print('Withdrawal successful!\n')
 
     def deposit(self, amount):
-        self.balance += amount
+        bal = int(self.balance)
+        bal += amount
+        self.balance = bal
         df = pd.read_csv("customer_data.csv")
         print(self.customer_id)
         num = self.customer_id - 1
@@ -96,7 +100,12 @@ class Customer:
     def check_balance(self):
         logger.log_activity(f"customer {self.first_name} has current balance {self.balance}")
         return f'Your current balance is {self.balance}'
-
+    def customer_details(self):
+        print(f"Name: {self.first_name} {self.last_name}")
+        print(f"Account_number: {self.account_number}")
+        print(f"Account type: {self.acct_type}")
+        print(f"ID: {self.customer_id}")
+        print("NOTE: keep your ID in mind")
 
 class CustomerDb:
 
@@ -133,10 +142,13 @@ class CustomerDb:
         self.df.to_csv('customer_data.csv', index=False)
         logger.log_activity(f"A new customer {customer.first_name} account was created")
         print('Account created successfully!\n')
+        customer.customer_details()
+        print("\n")
 
     def find_customer(self, customer_id):
         for customer in self.customers:
             if customer.customer_id == customer_id:
+                print(type(customer.customer.id))
                 return customer
         return None
 

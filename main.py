@@ -78,19 +78,19 @@ class Bank:
 
             elif menu == "2":
                 # staff_name = input("Enter staff name: ")
-                username = input("Enter staff username: ")
-                staff = staff_db.find_staff(username)
+                staff_id = int(input("Enter staff id: "))
+                staff = staff_db.find_staff(staff_id)
                 if staff is not None:
-                    first = input("If this is your first time login in \nPress Y for Yes, N if No: ")
-                #     username = input("Enter staff username: ")
+                    username = input("Enter staff username: ")
+                    first = input("If this is your first time login in \nPress Y for Yes, N if No: ")   
                     if first == "Y":
-                        password = input("Enter staff password: ")
+                        password = input("Enter temp password: ")
                         staff.first_login(username, password)
                         new_password = input("Enter new password: ")
                         staff.change_password(new_password)
-
-                    password = input("Enter password")
-                    staff.login(username, password)
+                    else:
+                        password = input("Enter password: ")
+                        staff.login(username, password)
                     
                     while True:
                         print("\nStaff actions:")
@@ -131,8 +131,11 @@ class Bank:
                 username = input("Enter admin username: ")
                 password = input("Enter admin password: ")
                 admin = Admin()
-                admin.login(username, password)
-
+                login = admin.login(username, password)
+                if not login:
+                    print("Incorrect crendentials.")
+                    break
+                    
                 while True:
                     print("\nAdmin actions:")
                     print("1. View logs")
@@ -161,8 +164,8 @@ class Bank:
                         admin.view("staff.csv")
 
                     elif admin_choice == "5":
-                        staff_name = input("Enter name of staff member to suspend: ")
-                        staff = staff_db.find_staff(staff_name)
+                        staff_id = int(input("Enter name of staff member to suspend: "))
+                        staff = staff_db.find_staff(staff_id)
                         if staff is not None:
                             admin.suspend_staff(staff)
                             print(staff.is_suspended)
@@ -172,9 +175,9 @@ class Bank:
                             print("Staff member not found.")
                             
                     elif admin_choice == "6":
-                        staff_name = input("Enter name of staff member to reactivate: ")
+                        staff_id = int(input("Enter name of staff member to reactivate: "))
                         print(staff_db.staff)
-                        staff = staff_db.find_staff(staff_name)
+                        staff = staff_db.find_staff(staff_id)
                         if staff is not None:
                             admin.reactivate_staff(staff)
                             # bank.logs.append(f"{name} reactivated by admin.")

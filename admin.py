@@ -23,6 +23,9 @@ class Admin():
             self.logged_in = True
             print("Successfully logged in")
             logger.log_activity("admin logged in successfully")
+            return True
+        else:
+            return False
 
     def logout(self):
         self.logged_in = False
@@ -56,10 +59,10 @@ class Admin():
         if self.logged_in:
             staff.is_suspended = True
             df = pd.read_csv("staff.csv")
-            idx = staff.ID - 1
+            idx = staff.staff_id - 1
             df.loc[idx, "Is_suspended"] = True
             df.to_csv("staff.csv", index=False)
-        logger.log_activity(f"{staff.Name} suspended by admin")
+        logger.log_activity(f"{staff.name} suspended by admin")
         
         
     def reactivate_staff(self, staff):
@@ -68,9 +71,9 @@ class Admin():
         
         staff.is_suspended = False
         df = pd.read_csv("staff.csv")
-        idx = staff.ID - 1
+        idx = staff.staff_id - 1
         df.loc[idx, "Is_suspended"] = False
         df.to_csv("staff.csv", index=False)
-        logger.log_activity(f"{staff.Name} reactivated by admin")
+        logger.log_activity(f"{staff.name} reactivated by admin")
 
 

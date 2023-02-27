@@ -1,13 +1,64 @@
 Date,Time,Activity
-2023-02-27,11:07:25.799860,admin logged in successfully
-2023-02-27,11:07:45.190911,admin created a new staff Tayo
-2023-02-27,11:08:03.998216,admin viewed staff.csv 
-2023-02-27,11:16:50.215328,admin logged in successfully
-2023-02-27,11:17:12.466269,admin viewed customer_data.csv 
-2023-02-27,11:17:25.804627,admin viewed staff.csv 
-2023-02-27,11:17:53.015694,admin created a new staff daniel
-2023-02-27,11:29:29.189773,admin logged in successfully
-2023-02-27,11:29:33.818552,admin viewed staff.csv 
-2023-02-27,11:35:05.061326,admin logged in successfully
-2023-02-27,11:46:51.643951,A new customer ade account was created
-2023-02-27,11:51:14.796308,A new customer bolu account was created
+2023-02-27,12:22:52.904330,A new customer Yetunde account was created
+2023-02-27,12:23:43.600535,A new customer Folabi account was created
+2023-02-27,12:24:21.525619,A new customer Yusuf account was created
+2023-02-27,12:25:43.041359,customer Yusuf transferred 500.00 to Folabi
+2023-02-27,12:25:56.692911,"customer Yusuf transferred 5,000.00 to Yetunde"
+2023-02-27,12:26:05.488724,customer Yusuf has current balance 244500.0
+2023-02-27,12:28:59.077480,admin logged in successfully
+2023-02-27,12:29:14.705779,admin created a new staff fola
+2023-02-27,12:29:28.225236,admin created a new staff Nimi
+2023-02-27,12:29:46.542484,admin created a new staff Bola
+2023-02-27,12:35:47.555388,admin viewed customer_data.csv 
+2023-02-27,12:36:07.462701,admin viewed staff.csv 
+2023-02-27,12:36:16.197305,"2    Bola
+Name: Name, dtype: object suspended by admin"
+2023-02-27,12:36:37.264292,"Series([], Name: Name, dtype: object) suspended by admin"
+2023-02-27,12:37:14.699127,"Series([], Name: Name, dtype: object) suspended by admin"
+2023-02-27,12:37:34.424483,"Series([], Name: Name, dtype: object) reactivated by admin"
+2023-02-27,12:38:51.051703,admin viewed staff.csv 
+2023-02-27,12:39:03.021955,"Series([], Name: Name, dtype: object) suspended by admin"
+2023-02-27,12:39:19.942236,"Series([], Name: Name, dtype: object) suspended by admin"
+2023-02-27,12:39:25.933778,"Series([], Name: Name, dtype: object) reactivated by admin"
+2023-02-27,12:39:33.796272,admin logged out successfully
+2023-02-27,13:58:06.219103,admin logged in successfully
+2023-02-27,13:58:15.068200,admin created a new staff Dan
+2023-02-27,13:58:39.581459,admin created a new staff tola
+2023-02-27,14:01:11.626732,staff Nimi logged in successfully for the first time
+2023-02-27,14:01:21.411291,staff Nimi changed password
+2023-02-27,14:07:36.835601,admin logged in successfully
+2023-02-27,14:07:50.427756,admin created a new staff Nimi
+2023-02-27,14:08:04.490361,admin created a new staff Bolu
+2023-02-27,14:08:11.567707,admin created a new staff Tola
+2023-02-27,14:08:52.434984,admin viewed customer_data.csv 
+2023-02-27,14:09:13.884494,admin logged out successfully
+2023-02-27,14:33:19.186640,staff Bolu logged in successfully for the first time
+2023-02-27,14:33:28.387064,staff Bolu changed password
+2023-02-27,14:35:42.573870,admin logged in successfully
+2023-02-27,14:36:02.158951,Bolu suspended by admin
+2023-02-27,14:36:34.745505,Bolu reactivated by admin
+2023-02-27,14:36:46.283663,admin logged out successfully
+2023-02-27,14:36:59.442579,customer Yusuf has current balance Current
+2023-02-27,14:52:25.731088,staff Bolu logged out successfully
+2023-02-27,14:55:53.534360,staff Bolu logged out successfully
+2023-02-27,14:56:03.101731,admin logged in successfully
+2023-02-27,14:56:17.188888,admin created a new staff Yetunde
+2023-02-27,15:12:00.001145,admin logged out successfully
+2023-02-27,15:13:01.901781,A new customer oduyomi account was created
+2023-02-27,15:13:32.976138,customer oduyomi has current balance 0
+2023-02-27,15:17:21.968655,admin viewed customer_data.csv 
+2023-02-27,15:17:30.394564,admin viewed customer_data.csv 
+2023-02-27,15:17:49.712765,admin created a new staff tola
+2023-02-27,15:18:57.780625,admin created a new staff bisi
+2023-02-27,15:23:57.677874,admin logged out successfully
+2023-02-27,15:24:21.797056,admin logged in successfully
+2023-02-27,15:24:43.263395,admin created a new staff Bolu
+2023-02-27,15:24:49.295857,admin viewed customer_data.csv 
+2023-02-27,15:25:27.036116,bisi suspended by admin
+2023-02-27,15:26:04.905893,tola suspended by admin
+2023-02-27,15:26:18.305014,tola reactivated by admin
+2023-02-27,15:26:23.566258,admin logged out successfully
+2023-02-27,15:26:54.576673,staff tola logged in successfully for the first time
+2023-02-27,15:27:06.708051,staff tola changed password
+2023-02-27,15:45:20.877564,staff tola logged out successfully
+2023-02-27,15:45:49.078182,staff tola logged in successfully
