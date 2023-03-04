@@ -54,6 +54,7 @@ class Customer:
         self.account_number = account_number 
         self.acct_type = acct_type
         self.balance = balance
+        self.logged_in = False
 
     
     def withdraw(self, amount):
@@ -106,13 +107,31 @@ class Customer:
 
     def check_balance(self):
         logger.log_activity(f"customer {self.first_name} has current balance {self.balance}")
-        return f'Your current balance is {self.balance}'
+        print(f'Your current balance is {self.balance:,.2f}')
+    
     def customer_details(self):
         print(f"Name: {self.first_name} {self.last_name}")
         print(f"Account_number: {self.account_number}")
         print(f"Account type: {self.acct_type}")
         print(f"ID: {self.customer_id}")
         print("NOTE: keep your ID in mind")
+
+    def login(self, account_number, password):
+        if self.account_number == account_number and self.pin == password:
+            self.logged_in = True
+            print("Login successfully!")
+            logger.log_activity(f"Customer {self.first_name} logged in successfully")
+            return True
+        else:
+            print("incorrect username or password")
+            return False
+
+    def logout(self):
+        self.logged_in = False
+        logger.log_activity(f"Customer {self.first_name} logged out successfully")
+        return "successfully logged out"
+
+
 
 class CustomerDb:
 
@@ -152,7 +171,7 @@ class CustomerDb:
         customer.customer_details()
         print("\n")
 
-    def find_customer(self, customer_id):
+    def find_customer(self, account_number):
         df = pd.read_csv("customer_data.csv")
         if len(self.customers) < len(df):
             df = pd.read_csv("customer_data.csv")
@@ -162,7 +181,7 @@ class CustomerDb:
                 self.customers.append(customer)
 
         for customer in self.customers:
-            if customer.customer_id == customer_id:
+            if customer.account_number == account_number:
                 # print(type(customer.customer.id))
                 return customer
         return None

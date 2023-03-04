@@ -1,6 +1,7 @@
 ID,Firstname,Lastname,Pin,Phone,Account_Number,Acct_Type,Balance
 1,adepena,fola,123455,98765432,6268578558,saving,100500
-2,sola,afex,12345,98765432,4430514056,current,10000
+2,sola,afex,12345,98765432,4430514056,current,20000
 3,dan,momo,123456789,987654321,9555083245,savings,101090000
 4,danny,Maestro,dmaestro1,9032115544,2979943198,premiun millionaires savings account,119269845
-5,ats,afex,12345,098765432,8748638174,savings,0
+5,ats,afex,12345,98765432,8748638174,savings,20000
+6,ade,tola,09876,98765432,4262038566,current,600000

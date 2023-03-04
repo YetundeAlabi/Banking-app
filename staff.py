@@ -87,7 +87,7 @@ class Staff:
         if self.logged_in:
             customer.deposit(amount)
             logger.log_activity(f"Deposit of {amount} successfully made for customer {customer.first_name} by {self.name}")
-            return f"Deposit of {amount} successfully made for customer {customer.first_name}"
+            print(f"Deposit of {amount:,.2f} successfully made for customer {customer.first_name}")
 
         else:
             return "You must be logged in to make a deposit."
@@ -95,9 +95,9 @@ class Staff:
 
     def view_bal(self, customer):
         if self.logged_in:
-            bal = customer.check_balance()
+            customer.check_balance()
             logger.log_activity(f"{self.name} checked customer {customer.first_name} balance")
-            return f"{bal} Balance for {customer.first_name}"
+            # return f"{bal} Balance for {customer.first_name}"
             
     def display_staff_details(self):
         details = f"name : {self.name}, password: {self.temp_password}, is_suspended: {self.is_suspended}"
