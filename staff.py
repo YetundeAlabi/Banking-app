@@ -60,13 +60,14 @@ class Staff:
 
         
     def login(self, username, password):
-        if self.name == username and self.temp_password == ceaser(password, direction="encrypt"):
+        if self.name == username and self.temp_password == ceaser(password, direction="encrypt") and self.is_suspended == False:
             self.logged_in = True
             print("Login successfully!")
             logger.log_activity(f"staff {self.name} logged in successfully")
-
+            return True
         else:
             print("incorrect username or password")
+            return False
 
     def logout(self):
         self.logged_in = False
@@ -127,12 +128,21 @@ class StaffDb:
         # save updated dataframe to CSV file
         self.df.to_csv('staff.csv', index=False)
         logger.log_activity(f"admin created a new staff {staff.name}")
+        staff.display_staff_details()
         print('Staff created successfully!\n')
 
 
     def find_staff(self, staff_id):
+        df = pd.read_csv("staff.csv")
+        if len(self.staff) < len(df):
+            df = pd.read_csv("staff.csv")
+
+            for i, row in df.iterrows():
+                staff = Staff(row['ID'], row['Name'], row['Password'])
+                self.staff.append(staff)
+
         for staff in self.staff:
-            print(type(staff.staff_id))
+            # print(type(staff.staff_id))
             if staff.staff_id == staff_id:
                 return staff
         return None

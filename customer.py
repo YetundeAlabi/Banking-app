@@ -41,7 +41,7 @@ file_exists = os.path.isfile('customer_data.csv')
 if not file_exists:
     with open('customer_data.csv', 'w', newline='') as file:
         writer = csv.writer(file)
-        writer.writerow(['ID', 'Firstname', 'Lastname', 'Pin', 'Phone', 'Account Number', 'Balance', 'Acct_Type'])
+        writer.writerow(['ID', 'Firstname', 'Lastname', 'Pin', 'Phone', 'Account_Number','Acct_Type', 'Balance' ])
 
 
 class Customer:
@@ -51,9 +51,9 @@ class Customer:
         self.last_name = last_name
         self.pin = pin
         self.phone = phone
-        self.account_number = account_number
-        self.balance = balance
+        self.account_number = account_number 
         self.acct_type = acct_type
+        self.balance = balance
 
     
     def withdraw(self, amount):
@@ -74,6 +74,7 @@ class Customer:
         bal = int(self.balance)
         bal += amount
         self.balance = bal
+
         df = pd.read_csv("customer_data.csv")
         print(self.customer_id)
         num = self.customer_id - 1
@@ -83,11 +84,17 @@ class Customer:
         print('Deposit successful!\n')
 
     def transfer(self, recipient, amount):
-        if amount > self.balance:
+        sender_bal = int(self.balance)
+        print(sender_bal)
+        recipient_bal = int(recipient.balance)
+        print(recipient_bal)
+        if amount > sender_bal:
             print('Insufficient balance!')
             return
-        self.balance -= amount
-        recipient.balance += amount
+        sender_bal -= amount
+        recipient_bal += amount
+        self.balance = sender_bal
+        recipient.balance = recipient_bal
         df = pd.read_csv("customer_data.csv")
         sender_index = self.customer_id - 1
         receiver_index = recipient.customer_id - 1
@@ -115,7 +122,7 @@ class CustomerDb:
         self.customers = []
         # create Account objects for each customer
         for i, row in self.df.iterrows():
-            customer = Customer(row['ID'], row['Firstname'], row['Lastname'], row['Pin'], row['Phone'], row['Account Number'], row['Balance'], row['Acct_Type'])
+            customer = Customer(row['ID'], row['Firstname'], row['Lastname'], row['Pin'], row['Phone'], row['Account_Number'], row['Acct_Type'], row['Balance'])
             self.customers.append(customer)
 
     def create_account(self):
@@ -130,13 +137,13 @@ class CustomerDb:
         customer_id = len(self.customers) + 1
         account_number = account_no()
         # create new Account object for customer
-        customer = Customer(customer_id, first_name=first_name, last_name=last_name, pin=ceaser(pin, direction="forward"), 
+        customer = Customer(customer_id, first_name=first_name, last_name=last_name, pin=ceaser(pin, direction="encrypt"), 
                             phone=phone, account_number=account_number, balance=balance, acct_type=acct_type)
         # append new customer to customers list
         self.customers.append(customer)
         # add new row to dataframe
         new_row = {'ID': customer_id, 'Firstname': first_name, 'Lastname': last_name, 'Pin': pin, 'Phone': phone,
-                    'Account Number': account_number, 'Balance': balance, 'Acct_Type': acct_type}
+                    'Account_Number': account_number, 'Acct_Type': acct_type, 'Balance': balance}
         self.df = self.df.append(new_row, ignore_index=True)
         # save updated dataframe to CSV file
         self.df.to_csv('customer_data.csv', index=False)
@@ -146,9 +153,17 @@ class CustomerDb:
         print("\n")
 
     def find_customer(self, customer_id):
+        df = pd.read_csv("customer_data.csv")
+        if len(self.customers) < len(df):
+            df = pd.read_csv("customer_data.csv")
+
+            for i, row in self.df.iterrows():
+                customer = Customer(row['ID'], row['Firstname'], row['Lastname'], row['Pin'], row['Phone'], row['Account_Number'], row['Acct_Type'], row['Balance'])
+                self.customers.append(customer)
+
         for customer in self.customers:
             if customer.customer_id == customer_id:
-                print(type(customer.customer.id))
+                # print(type(customer.customer.id))
                 return customer
         return None
 

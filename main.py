@@ -36,7 +36,9 @@ class Bank:
                     elif choice == '2':
                         customer_id = int(input('Enter customer ID: '))
                         customer = customer_db.find_customer(customer_id)
+                        print(customer)
                         if customer:
+                            
                             amount = float(input('Enter amount to withdraw: '))
                             customer.withdraw(amount)
                         else:
@@ -90,7 +92,9 @@ class Bank:
                         staff.change_password(new_password)
                     else:
                         password = input("Enter password: ")
-                        staff.login(username, password)
+                        login = staff.login(username, password)
+                        if not login:
+                            break
                     
                     while True:
                         print("\nStaff actions:")
@@ -164,20 +168,20 @@ class Bank:
                         admin.view("staff.csv")
 
                     elif admin_choice == "5":
-                        staff_id = int(input("Enter name of staff member to suspend: "))
-                        staff = staff_db.find_staff(staff_id)
+                        staff_name = input("Enter name of staff member to suspend: ")
+                        staff = admin.staff_db(staff_name)
                         if staff is not None:
                             admin.suspend_staff(staff)
-                            print(staff.is_suspended)
+                            
                             # bank.logs.append(f"{name} suspended by admin.")
-                            print("Staff member suspended successfully.")
+                            print(f"Staff member suspended successfully.")
                         else:
                             print("Staff member not found.")
                             
                     elif admin_choice == "6":
-                        staff_id = int(input("Enter name of staff member to reactivate: "))
-                        print(staff_db.staff)
-                        staff = staff_db.find_staff(staff_id)
+                        staff_name = input("Enter name of staff member to reactivate: ")
+                    
+                        staff = admin.staff_db(staff_name)
                         if staff is not None:
                             admin.reactivate_staff(staff)
                             # bank.logs.append(f"{name} reactivated by admin.")

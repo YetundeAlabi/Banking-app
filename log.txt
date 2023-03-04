@@ -62,3 +62,148 @@ Name: Name, dtype: object suspended by admin"
 2023-02-27,15:27:06.708051,staff tola changed password
 2023-02-27,15:45:20.877564,staff tola logged out successfully
 2023-02-27,15:45:49.078182,staff tola logged in successfully
+2023-02-27,22:39:03.995002,staff tola logged out successfully
+2023-02-27,22:39:53.645074,staff tola logged in successfully
+2023-02-27,22:43:31.220259,staff tola logged in successfully
+2023-02-27,22:43:37.782055,customer oduyomi has current balance savings
+2023-02-27,22:43:37.785469,tola checked customer oduyomi balance
+2023-02-27,22:48:25.302513,staff tola logged in successfully
+2023-02-27,22:48:45.684175,customer oduyomi has current balance savings
+2023-02-27,22:48:45.694250,tola checked customer oduyomi balance
+2023-02-27,23:00:01.544353,A new customer yetty account was created
+2023-02-28,10:09:23.218973,A new customer ade account was created
+2023-02-28,10:11:50.281637,A new customer nimi account was created
+2023-02-28,10:12:42.863373,"customer ade transferred 1,000.00 to nimi"
+2023-02-28,10:12:58.382896,nimi withdrew 1000.0 from account
+2023-02-28,10:13:12.090618,admin logged in successfully
+2023-02-28,10:14:17.373051,admin created a new staff bola
+2023-02-28,10:14:28.295797,admin created a new staff tade
+2023-02-28,10:14:41.246347,admin viewed staff.csv 
+2023-02-28,10:14:51.006927,admin viewed customer_data.csv 
+2023-02-28,10:15:28.717678,admin logged in successfully
+2023-02-28,10:15:33.057917,bola suspended by admin
+2023-02-28,10:15:47.782883,tade suspended by admin
+2023-02-28,10:15:52.555913,tade reactivated by admin
+2023-02-28,10:16:02.321223,admin logged out successfully
+2023-02-28,10:16:33.074830,staff bola logged in successfully for the first time
+2023-02-28,10:16:41.388637,staff bola changed password
+2023-02-28,10:16:49.100629,customer ade has current balance savings
+2023-02-28,10:16:49.103748,bola checked customer ade balance
+2023-02-28,10:18:24.220843,staff bola changed password
+2023-02-28,10:21:39.735296,staff bola logged out successfully
+2023-02-28,10:46:12.990282,A new customer daniel account was created
+2023-02-28,11:00:21.878963,A new customer daniel account was created
+2023-02-28,11:01:40.025855,A new customer ade account was created
+2023-02-28,11:03:50.689368,A new customer ade account was created
+2023-02-28,11:06:18.457248,A new customer tola account was created
+2023-02-28,11:10:47.923488,A new customer adepena account was created
+2023-02-28,11:11:52.038222,A new customer sola account was created
+2023-02-28,11:12:29.205714,A new customer dan account was created
+2023-02-28,11:13:19.932863,"customer dan transferred 100,000.00 to adepena"
+2023-02-28,11:14:15.751414,customer dan has current balance 99900000.0
+2023-02-28,11:15:53.330834,admin logged in successfully
+2023-02-28,11:21:24.111290,admin logged in successfully
+2023-02-28,11:21:32.312604,admin created a new staff nimi
+2023-02-28,11:22:13.912108,admin created a new staff tola
+2023-02-28,11:22:17.160142,admin viewed customer_data.csv 
+2023-02-28,11:22:29.733942,admin viewed staff.csv 
+2023-02-28,11:38:39.030368,admin logged out successfully
+2023-02-28,11:39:00.936664,admin logged in successfully
+2023-02-28,11:39:09.625389,tola suspended by admin
+2023-02-28,11:40:30.148896,admin logged in successfully
+2023-02-28,11:40:44.653310,admin created a new staff tola
+2023-02-28,11:40:55.928596,admin created a new staff nimi
+2023-02-28,11:41:00.122065,admin viewed staff.csv 
+2023-02-28,11:41:05.276556,admin viewed customer_data.csv 
+2023-02-28,11:51:07.688982,admin logged out successfully
+2023-02-28,11:51:24.832601,admin logged in successfully
+2023-02-28,11:51:38.452606,admin created a new staff tolu
+2023-02-28,11:53:42.244678,admin logged out successfully
+2023-02-28,11:54:04.943296,admin logged in successfully
+2023-02-28,11:54:44.848559,admin logged in successfully
+2023-02-28,11:54:55.368894,admin created a new staff tolu
+2023-02-28,11:55:11.607876,admin created a new staff dolapo
+2023-02-28,11:55:23.046331,admin viewed staff.csv 
+2023-02-28,11:55:45.699138,admin created a new staff weeed
+2023-02-28,12:18:05.831107,admin logged out successfully
+2023-02-28,12:18:29.155652,admin logged in successfully
+2023-02-28,12:18:31.888940,admin viewed staff.csv 
+2023-02-28,12:19:10.519010,admin logged in successfully
+2023-02-28,12:21:38.566373,admin logged in successfully
+2023-02-28,12:21:44.338810,"Series([], Name: Name, dtype: object) suspended by admin"
+2023-02-28,12:23:21.066528,admin logged in successfully
+2023-02-28,12:24:10.409582,"Series([], Name: Name, dtype: object) suspended by admin"
+2023-02-28,12:30:19.709332,admin logged out successfully
+2023-02-28,12:32:00.960362,admin logged in successfully
+2023-02-28,12:32:18.300112,"Series([], Name: Name, dtype: object) suspended by admin"
+2023-02-28,12:37:18.047525,admin logged out successfully
+2023-02-28,12:37:34.971624,admin logged in successfully
+2023-02-28,12:37:50.921500,"0    tolu
+Name: Name, dtype: object suspended by admin"
+2023-02-28,12:40:55.700871,admin logged out successfully
+2023-02-28,12:41:54.003145,admin logged in successfully
+2023-02-28,12:41:59.888600,"1    dolapo
+Name: Name, dtype: object suspended by admin"
+2023-02-28,12:49:26.524480,admin logged in successfully
+2023-02-28,12:50:15.666096,admin logged in successfully
+2023-02-28,12:51:16.252038,admin logged in successfully
+2023-02-28,12:51:22.576206,"1    dolapo
+Name: Name, dtype: object reactivated by admin"
+2023-02-28,13:00:51.119988,admin logged out successfully
+2023-02-28,13:01:02.510681,admin logged in successfully
+2023-02-28,13:01:10.275002,"1    dolapo
+Name: Name, dtype: object suspended by admin"
+2023-02-28,13:02:20.190452,admin logged out successfully
+2023-02-28,13:02:52.000583,admin logged in successfully
+2023-02-28,13:02:59.242615,admin created a new staff tola
+2023-02-28,13:03:06.461639,admin created a new staff dolapo
+2023-02-28,13:03:11.905049,admin created a new staff sola
+2023-02-28,13:03:26.793034,"0    tola
+Name: Name, dtype: object suspended by admin"
+2023-02-28,13:03:35.143089,"2    sola
+Name: Name, dtype: object suspended by admin"
+2023-02-28,13:03:41.781478,"2    sola
+Name: Name, dtype: object reactivated by admin"
+2023-02-28,13:04:30.555275,admin logged out successfully
+2023-02-28,13:05:18.733260,admin logged in successfully
+2023-02-28,13:05:21.826390,admin viewed staff.csv 
+2023-02-28,13:07:24.790979,admin logged out successfully
+2023-02-28,13:12:46.959151,customer adepena has current balance 100000
+2023-02-28,13:13:23.938068,adepena withdrew 500.0 from account
+2023-02-28,13:52:31.263659,"customer dan transferred 10,000.00 to sola"
+2023-02-28,13:52:53.633865,customer dan has current balance 99890000.0
+2023-02-28,14:12:03.996825,A new customer danny account was created
+2023-02-28,14:13:55.475268,customer danny has current balance 0
+2023-02-28,14:16:02.132506,"customer danny transferred 1,200,000.00 to dan"
+2023-02-28,14:17:11.788496,customer danny has current balance 96470345.0
+2023-02-28,14:17:28.426257,danny withdrew 200500.0 from account
+2023-02-28,14:18:08.344135,admin logged in successfully
+2023-02-28,14:18:49.984927,admin created a new staff feranmi
+2023-02-28,14:19:10.059814,admin viewed customer_data.csv 
+2023-02-28,14:20:18.055815,admin viewed staff.csv 
+2023-02-28,14:21:17.593424,"3    feranmi
+Name: Name, dtype: object suspended by admin"
+2023-02-28,14:21:22.004622,admin logged out successfully
+2023-02-28,14:24:41.597270,staff feranmi logged in successfully for the first time
+2023-02-28,14:24:51.868067,staff feranmi changed password
+2023-02-28,14:25:20.731445,Deposit of 23000000.0 successfully made for customer danny by feranmi
+2023-02-28,14:25:33.002709,customer danny has current balance 119269845.0
+2023-02-28,14:25:33.005175,feranmi checked customer danny balance
+2023-02-28,14:25:43.650926,customer danny has current balance 119269845.0
+2023-02-28,14:25:43.653724,feranmi checked customer danny balance
+2023-02-28,14:25:53.137047,staff feranmi logged out successfully
+2023-02-28,16:49:21.272553,A new customer ats account was created
+2023-02-28,16:50:14.451464,admin logged in successfully
+2023-02-28,16:50:23.268970,admin created a new staff wealth
+2023-02-28,16:50:54.960316,admin logged out successfully
+2023-02-28,16:51:22.093605,staff wealth logged in successfully for the first time
+2023-02-28,16:51:33.069073,staff wealth changed password
+2023-02-28,16:51:46.344945,customer ats has current balance 0
+2023-02-28,16:51:46.350660,wealth checked customer ats balance
+2023-02-28,16:56:57.726117,staff wealth logged out successfully
+2023-02-28,16:57:44.619941,staff wealth logged in successfully
+2023-02-28,16:59:56.824569,staff wealth logged in successfully
+2023-02-28,17:01:51.586134,staff wealth logged in successfully
+2023-02-28,17:33:12.937790,staff wealth logged in successfully
+2023-02-28,17:33:18.052410,customer ats has current balance 0
+2023-02-28,17:33:18.052410,wealth checked customer ats balance

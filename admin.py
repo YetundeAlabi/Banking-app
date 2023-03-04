@@ -57,12 +57,13 @@ class Admin():
 
     def suspend_staff(self, staff):
         if self.logged_in:
-            staff.is_suspended = True
+
+            staff.is_suspended = "suspended"
             df = pd.read_csv("staff.csv")
-            idx = staff.staff_id - 1
-            df.loc[idx, "Is_suspended"] = True
+            idx = staff.ID - 1
+            df.loc[idx, "Is_suspended"] = "suspended"
             df.to_csv("staff.csv", index=False)
-        logger.log_activity(f"{staff.name} suspended by admin")
+        logger.log_activity(f"{staff.Name} suspended by admin")
         
         
     def reactivate_staff(self, staff):
@@ -71,9 +72,13 @@ class Admin():
         
         staff.is_suspended = False
         df = pd.read_csv("staff.csv")
-        idx = staff.staff_id - 1
+        idx = staff.ID - 1
         df.loc[idx, "Is_suspended"] = False
         df.to_csv("staff.csv", index=False)
-        logger.log_activity(f"{staff.name} reactivated by admin")
+        logger.log_activity(f"{staff.Name} reactivated by admin")
 
 
+    def staff_db(self, staff_name):
+        df = pd.read_csv("staff.csv")
+        staff = df[df.Name == staff_name]
+        return staff
