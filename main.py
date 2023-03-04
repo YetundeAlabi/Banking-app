@@ -20,63 +20,64 @@ class Bank:
 
             menu = input("Enter your role: ")
             if menu == "1":
-                while True:
-                    print("=" * 30)
-                    print('1. Create Account')
-                    print('2. Withdraw')
-                    print('3. Deposit')
-                    print('4. Transfer')
-                    print('5. Check Balance')
-                    print('6. Quit\n')
-                    print("=" * 30)
+                print("=" * 30)
+                print('1. Create Account')
+                print('2. Perform other transactions')
+                print("=" * 30)
+                print("\n")
+                cust_option = input("Enter an option: ")
+                if cust_option == "1":
+                    customer_db.create_account()
 
-                    choice = input('Enter your choice: ')
-                    if choice == '1':
-                        customer_db.create_account()
-                    elif choice == '2':
-                        customer_id = int(input('Enter customer ID: '))
-                        customer = customer_db.find_customer(customer_id)
-                        print(customer)
-                        if customer:
+                elif cust_option == "2":
+                    print("Welcome!!!\n")
+                    customer_acc = int(input("Enter your account number: "))
+                    password = input("Enter your password: ") 
+                    customer = customer_db.find_customer(customer_acc)
+                    login = customer.login(customer_acc, password)
+                    if login:
+                        while True:
+                            print("=" * 30)
+                            print('1. Withdraw')
+                            print('2. Deposit')
+                            print('3. Transfer')
+                            print('4. Check Balance')
+                            print('5. Quit\n')
+                            print("=" * 30)
+
+                            choice = input('Enter your choice: ')
                             
-                            amount = float(input('Enter amount to withdraw: '))
-                            customer.withdraw(amount)
-                        else:
-                            print('Customer not found!')
-                    elif choice == '3':
-                        customer_id = int(input('Enter customer ID: '))
-                        customer = customer_db.find_customer(customer_id)
-                        if customer:
-                            amount = float(input('Enter amount to deposit: '))
-                            customer.deposit(amount)
-                        else:
-                            print('Customer not found!')
-                    elif choice == '4':
-                        sender_id = int(input('Enter sender ID: '))
-                        sender = customer_db.find_customer(sender_id)
-                        if sender:
-                            recipient_id = int(input('Enter recipient ID: '))
-                            recipient = customer_db.find_customer(recipient_id)
-                            if recipient:
-                                amount = float(input('Enter amount to transfer: '))
-                                sender.transfer(recipient, amount)
+                            if choice == '1':
+                                amount = float(input('Enter amount to withdraw: '))
+                                customer.withdraw(amount)
+                            
+                            elif choice == "2":
+                                amount = float(input('Enter amount to deposit: '))
+                                customer.deposit(amount)
+                                
+                            elif choice == '3':
+                                recipient_acc = int(input('Enter recipient account number: '))
+                                recipient = customer_db.find_customer(recipient_acc)
+                                if recipient:
+                                    amount = float(input('Enter amount to transfer: '))
+                                    customer.transfer(recipient, amount)
+                                else:
+                                    print('Receipient not found!')
+
+                            elif choice == '4':
+                                customer.check_balance()
+
+
+                            elif choice == '5':
+                                print("Thank you for using Nimi's Bank!")
+                                break
                             else:
-                                print('Recipient not found!')
-                        else:
-                            print('Sender not found!')
+                                print('Invalid choice')
+                    
 
-                    elif choice == '5':
-                        customer_id = int(input('Enter customer ID: '))
-                        customer = customer_db.find_customer(customer_id)
-                        if customer:
-                            bal = customer.check_balance()
-                            print(bal)
+                else:
+                    print('Customer not found!')
 
-                    elif choice == '6':
-                        print("Thank you for using Nimi's Bank!")
-                        break
-                    else:
-                        print('Invalid choice')
 
             elif menu == "2":
                 # staff_name = input("Enter staff name: ")

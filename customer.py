@@ -119,7 +119,7 @@ class Customer:
     def login(self, account_number, password):
         if self.account_number == account_number and self.pin == password:
             self.logged_in = True
-            print("Login successfully!")
+            print("Login successful!")
             logger.log_activity(f"Customer {self.first_name} logged in successfully")
             return True
         else:
@@ -179,8 +179,10 @@ class CustomerDb:
             for i, row in self.df.iterrows():
                 customer = Customer(row['ID'], row['Firstname'], row['Lastname'], row['Pin'], row['Phone'], row['Account_Number'], row['Acct_Type'], row['Balance'])
                 self.customers.append(customer)
-
+        print(self.customers)
         for customer in self.customers:
+            print(customer.account_number)
+            print(type(customer.account_number))
             if customer.account_number == account_number:
                 # print(type(customer.customer.id))
                 return customer

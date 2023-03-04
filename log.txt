@@ -207,3 +207,25 @@ Name: Name, dtype: object suspended by admin"
 2023-02-28,17:33:12.937790,staff wealth logged in successfully
 2023-02-28,17:33:18.052410,customer ats has current balance 0
 2023-02-28,17:33:18.052410,wealth checked customer ats balance
+2023-03-04,19:31:50.563795,A new customer ade account was created
+2023-03-04,19:34:05.795964,staff feranmi logged in successfully for the first time
+2023-03-04,19:34:14.558003,staff feranmi changed password
+2023-03-04,19:34:48.931219,Deposit of 600000.0 successfully made for customer ade by feranmi
+2023-03-04,19:34:57.891433,customer ade has current balance 600000.0
+2023-03-04,19:34:57.891433,feranmi checked customer ade balance
+2023-03-04,19:37:48.773556,staff feranmi logged out successfully
+2023-03-04,19:38:26.199708,staff feranmi logged in successfully
+2023-03-04,19:38:32.162794,customer ats has current balance 0
+2023-03-04,19:38:32.162794,feranmi checked customer ats balance
+2023-03-04,19:38:43.559818,customer ade has current balance 600000
+2023-03-04,19:38:43.559818,feranmi checked customer ade balance
+2023-03-04,19:38:50.653749,staff feranmi logged out successfully
+2023-03-04,19:38:56.584942,customer ade has current balance 600000
+2023-03-04,19:45:17.287126,staff feranmi logged in successfully
+2023-03-04,19:45:21.020232,customer ade has current balance 600000
+2023-03-04,19:45:21.020232,feranmi checked customer ade balance
+2023-03-04,19:45:31.729593,Deposit of 10000.0 successfully made for customer sola by feranmi
+2023-03-04,19:52:35.691473,staff feranmi logged out successfully
+2023-03-04,21:47:51.572143,A new customer tawab account was created
+2023-03-04,22:06:40.554606,Customer tawab logged in successfully
+2023-03-04,22:08:07.181264,customer tawab has current balance 20000.0
