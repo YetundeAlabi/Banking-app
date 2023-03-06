@@ -58,10 +58,10 @@ class Admin():
     def suspend_staff(self, staff):
         if self.logged_in:
 
-            staff.is_suspended = "suspended"
+            staff.is_suspended = True
             df = pd.read_csv("staff.csv")
             idx = staff.ID - 1
-            df.loc[idx, "Is_suspended"] = "suspended"
+            df.loc[idx, "Is_suspended"] = True
             df.to_csv("staff.csv", index=False)
         logger.log_activity(f"{staff.Name} suspended by admin")
         

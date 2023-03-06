@@ -62,7 +62,7 @@ class Staff:
     def login(self, username, password):
         if self.name == username and self.temp_password == ceaser(password, direction="encrypt") and self.is_suspended == False:
             self.logged_in = True
-            print("Login successfully!")
+            print("Login successful!")
             logger.log_activity(f"staff {self.name} logged in successfully")
             return True
         else:
@@ -132,7 +132,7 @@ class StaffDb:
         print('Staff created successfully!\n')
 
 
-    def find_staff(self, staff_id):
+    def find_staff(self, staff_name):
         df = pd.read_csv("staff.csv")
         if len(self.staff) < len(df):
             df = pd.read_csv("staff.csv")
@@ -142,8 +142,8 @@ class StaffDb:
                 self.staff.append(staff)
 
         for staff in self.staff:
-            # print(type(staff.staff_id))
-            if staff.staff_id == staff_id:
+            # print(type(staff.name))
+            if staff.name == staff_name:
                 return staff
         return None
         

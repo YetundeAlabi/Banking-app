@@ -229,3 +229,8 @@ Name: Name, dtype: object suspended by admin"
 2023-03-04,21:47:51.572143,A new customer tawab account was created
 2023-03-04,22:06:40.554606,Customer tawab logged in successfully
 2023-03-04,22:08:07.181264,customer tawab has current balance 20000.0
+2023-03-06,09:18:17.854682,Customer ade logged in successfully
+2023-03-06,09:18:48.502058,customer ade has current balance 600000
+2023-03-06,09:43:03.804377,staff feranmi logged in successfully
+2023-03-06,09:53:05.841164,staff feranmi logged in successfully
+2023-03-06,10:02:23.013856,staff feranmi logged out successfully

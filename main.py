@@ -1,11 +1,11 @@
 from customer import CustomerDb
 from staff import StaffDb
 from admin import Admin
-import csv
+from log import Logger
 
 staff_db = StaffDb()
 customer_db = CustomerDb()
-
+logger = Logger()
 
 class Bank:
     
@@ -80,11 +80,9 @@ class Bank:
 
 
             elif menu == "2":
-                # staff_name = input("Enter staff name: ")
-                staff_id = int(input("Enter staff id: "))
-                staff = staff_db.find_staff(staff_id)
+                username = input("Enter staff username: ")
+                staff = staff_db.find_staff(username)
                 if staff is not None:
-                    username = input("Enter staff username: ")
                     first = input("If this is your first time login in \nPress Y for Yes, N if No: ")   
                     if first == "Y":
                         password = input("Enter temp password: ")
@@ -94,9 +92,14 @@ class Bank:
                     else:
                         password = input("Enter password: ")
                         login = staff.login(username, password)
-                        if not login:
+                        if login: 
+                            if staff.is_suspended == True:
+                                print(f"{staff.name} has being suspended. Contact the admin for reactivation")
+                                logger.log_activity(f'{staff.name} tried to login on the suspended account')
+                                break
+                        else:
                             break
-                    
+    
                     while True:
                         print("\nStaff actions:")
                         print("1. Deposit for customer")
@@ -106,8 +109,8 @@ class Bank:
                         staff_choice = input("Enter your choice: ")
 
                         if staff_choice == "1":
-                            customer_id = int(input('Enter customer ID: '))
-                            customer = customer_db.find_customer(customer_id)
+                            customer_acc = int(input("Enter your account number: "))
+                            customer = customer_db.find_customer(customer_acc)
                             if customer:
                                 amount = float(input('Enter amount to deposit: '))
                                 staff.deposit(customer, amount)
@@ -115,8 +118,8 @@ class Bank:
                                 print("Customer not found")
 
                         elif staff_choice == "2":
-                            customer_id = int(input('Enter customer ID: '))
-                            customer = customer_db.find_customer(customer_id)
+                            customer_acc = int(input("Enter your account number: "))
+                            customer = customer_db.find_customer(customer_acc)
                             if customer:
                                 staff.view_bal(customer)
 
@@ -181,11 +184,9 @@ class Bank:
                             
                     elif admin_choice == "6":
                         staff_name = input("Enter name of staff member to reactivate: ")
-                    
                         staff = admin.staff_db(staff_name)
                         if staff is not None:
                             admin.reactivate_staff(staff)
-                            # bank.logs.append(f"{name} reactivated by admin.")
                             print("Staff member reactivated successfully.")
                         else:
                             print("Staff member not found.")
@@ -210,13 +211,4 @@ print("\nWelcome to Nimi's Bank!")
 bank = Bank()
 bank.run()
 
-
-# def print_menu():
-#     print("=" * 30)
-#     print("1. Register")
-#     print("2. Deposit")
-#     print("3. Withdraw")
-#     print("4. Transfer")
-#     print("5. Quit")
-#     print("=" * 30)
 

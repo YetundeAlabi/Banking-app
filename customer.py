@@ -114,10 +114,10 @@ class Customer:
         print(f"Account_number: {self.account_number}")
         print(f"Account type: {self.acct_type}")
         print(f"ID: {self.customer_id}")
-        print("NOTE: keep your ID in mind")
+        print("NOTE: keep your account number in mind")
 
     def login(self, account_number, password):
-        if self.account_number == account_number and self.pin == password:
+        if self.account_number == account_number and self.pin == ceaser(password, "encrypt"):
             self.logged_in = True
             print("Login successful!")
             logger.log_activity(f"Customer {self.first_name} logged in successfully")
